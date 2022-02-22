@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <style>
+        div { display: inline-block;}
+    </style>
+    <body>
+        <div data-parent-alo="default">
+            <div id="appones" data-proportion-h="1" style="width:120px; background:#333;"></div>
+            <div id="appone" data-proportion-w="2" style="height:120px; background:#333;"></div>
+
+            <div data-proportion-targer-h="1" data-proportion-target="appone" style="width:120px; background:#333;"></div>
+
+            <div data-proportion-targer-w="1" data-proportion-target="appone" style="height:120px; background:#333;"></div>
+        </div>
+        
+        <div style="widht:100%; display:block;">
+            <div data-proportion-h="1" style="width:30%; background:#333;"></div>
+            <div data-proportion-h="1" style="width:30%; background:#333;"></div>
+            <div data-proportion-h="1" style="width:30%; background:#333;"></div>
+        </div>
+        
+        <div id="sT" style="height: 200px"></div>
+        <div style="width: 20px; background-color: aqua" data-proportion-targer-oh="1" data-proportion-target-oh="sT" data-proportion-targer-ow="1" data-proportion-target-ow="appones"></div>
+        
+        <div id="my" style="width: 20px; background-color: aqua"></div>
+        
+        <script src="stickjaw.js"></script>
+        <script>
+            /*var SJ_init = {
+                options: {
+                    hlw: true,
+                    wlh: true,
+                    hlt: true,
+                    wlt: true,
+                    alo: true,
+                },
+                settings: {
+                    windowResize: true
+                }
+            }*/
+            
+            var SJ_init = {
+                options: {
+                    hlw: true,
+                    wlh: true,
+                    hlt: true,
+                    wlt: true,
+                    alo: true,
+                    ohlt: true,
+                    owlt: true
+                },
+                settings: {
+                    windowResize: true,
+                    writeHystory: true
+                }
+            }
+            
+            
+            
+            var e = new SJ(SJ_init);
+            
+            
+            
+            SJ.loop([
+                        {
+                            method: 'hlw',
+                            currentTarget: 'my',
+                            proportion: 2,
+                            target: null
+                        },
+                        {
+                            method: 'wlh',
+                            currentTarget: 'sT',
+                            proportion: 2,
+                            target: null
+                        },
+                        {
+                            method: 'hlt',
+                            currentTarget: 'sT',
+                            proportion: 2,
+                            target: 'appone'
+                        },
+                        {
+                            method: 'wlt',
+                            currentTarget: 'sT',
+                            proportion: 2,
+                            target: 'appone'
+                        }
+                ]);
+            
+            function progress(prop){
+                SJ.loop([{method: 'hlw',
+                    currentTarget: 'my',
+                    proportion: prop,
+                    target: null}]);
+            }
+            
+            var prop = 0.01;
+            
+            window.addEventListener('load', function(){
+            
+                        
+                   setInterval(function(){
+                       if(prop <= 2){
+                           progress(prop);
+                            prop = prop + 0.01;
+                       }
+                    
+
+                }, 1, prop);
+
+
+            }, false);
+            
+            
+        </script>
+    </body>
+</html>
