@@ -1,2 +1,2 @@
 # Java-Project
-The special repositury for Java
+The special repository for Java
