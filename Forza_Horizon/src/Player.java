@@ -1,13 +1,18 @@
 import javax.swing.*;
-import java.awt.Image;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 public class Player {
-    public static final int MAX_V = 50;
+    public static final int MAX_V = 100;
     public static final int MAX_TOP = -180;
     public static final int MAX_BOTTOM = 220;
 
     Image img = new ImageIcon("res/Images/Green_car.png").getImage();
+
+    public Rectangle getRect(){
+        return new Rectangle(x, y, 170, 100);
+    }
+
     int v =0;
     int dv = 0;
     int s = 0;
@@ -45,7 +50,7 @@ public class Player {
             dv = 1;
         }
         if (key == KeyEvent.VK_LEFT){
-            dv = -1;
+            dv = -2;
         }
         if (key == KeyEvent.VK_UP){
             dy = 6;
